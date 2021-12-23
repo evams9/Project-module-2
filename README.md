@@ -1,4 +1,4 @@
-# course-project-module-2
+# Project module 2
 
 
 ## Description:
