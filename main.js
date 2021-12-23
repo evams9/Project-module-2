@@ -42,5 +42,3 @@ async function run() {
 }
 
 run();
-
-Mikapikas
