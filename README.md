@@ -1,11 +1,22 @@
 # course-project-module-2
 
-rename `.env.sample` to `.env` and modify the variables
 
-in order to start the project run script `start:watch` or `start`
+## Description:
 
-## before start
+Library to organice our comic collection.
 
-don't forget to modify `.env` and create a database in mongo
+## The user can:
 
-## I'm doing something here too
+- Sign up: The user can create an account.
+- Log in: The user can log in in the website.
+- Create Home: The user can see their comics and add more volumes.
+- Log out: The user can log in in the website.
+- Add comic information: The user can complete the characteristics of the comic that is adding.
+- Information comic page: The user can consult the comic's genre, publisher, pages, description and opinion.
+- Create edit profile: The user should be able to create and edit the profile.
+
+## Backlog:
+- Favorite comics: The user can add favorites.
+- Check: The user can mark which books are read.
+- Add friends.
+- Add latest interactions.
