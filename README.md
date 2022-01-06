@@ -70,3 +70,10 @@ Library to organice our comic collection.
    review: String,
    volumePic: Img,
 }
+```
+
+## Wireframes:
+
+![Wireframes](https://user-images.githubusercontent.com/91825214/148398056-0196d69d-7445-4c2d-9787-6f7d2b2a922f.jpg)
+
+
