@@ -1,20 +1,27 @@
 <div class="container">
   <form action="/signup" method="POST" class="form" id="form">
+
+    <p class="form-title">Form registration</p>
+
     <div class="form-input">
       <input type="text" name="username" placeholder="User name" id="myname">
       <label for="myname">User</label>
     </div>
+
     <div class="form-input">
       <input type="password" name="password" placeholder="Enter password" id="password">
       <label for="password">Password</label>
     </div>
+
     <div class="form-input">
       <input type="email" name="email" placeholder="Enter email" id="email">
       <label for="email">E-mail</label>
     </div>
+
     {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>
     {{/if}}
+
     <div class="button-SignUp">
       <button type="submit">Sign up</button>
     </div>
