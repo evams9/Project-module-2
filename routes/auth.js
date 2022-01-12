@@ -8,72 +8,70 @@ const saltRounds = 10;
 function authRoutes() {
   const router = express.Router();
 
-  router.get('/login', async (req, res, next) => {
-    try {
-      res.render('auth/login', { name: 'Log in' });
-    } catch (e) {
-      next(e);
-    }
+  router.get('/login', (req, res) => {
+    res.render('auth/login', { name: 'Log in' });
   });
 
   router.post('/login', async (req, res, next) => {
+    const { email, password } = req.body;
     try {
-      console.log('The form data: ', req.body);
-      /* .then(userFromDB => {
-    res.redirect('/userProfile');          (redirigir usuario a su perfil?)
-}) */
+      if (!email || !password) {
+        return res.render('auth/login', {
+          errorMessage: 'Complete all fields',
+        });
+      }
+      const dbUser = await User.findOne({ email });
+      if (!dbUser) {
+        return res.render('auth/login', { errorMessage: 'User not found' });
+      }
+      const passwordUser = await bcryptjs.compare(password, dbUser.hashedPassword);
+      if (passwordUser) {
+        req.session.currentUser = dbUser;
+        return res.redirect('/profile');
+      }
+      return res.render('./auth/login', { errorMessage: 'Authentication failed. Try again' });
     } catch (e) {
       next(e);
     }
   });
 
-  router.get('/signup', async (req, res, next) => {
-    try {
-      res.render('auth/signup', { name: 'Sign up' });
-    } catch (e) {
-      next(e);
-    }
+  router.get('/signup', (req, res) => {
+    res.render('auth/signup', { name: 'Sign up' });
   });
 
   router.post('/signup', async (req, res, next) => {
-    const { username, email, password } = req.body;
-    if (!username || !email || !password) {
-      return res.render('auth/signup', {
-        errorMessage: 'All fields are mandatory. Please provide your username, email and password.',
-      });
-    }
-    /* .catch(error => {
-      // copy the following if-else statement
-      if (error instanceof mongoose.Error.ValidationError) {
-          res.status(500).render('auth/signup', { errorMessage: error.message });
-      } else {
-          next(error);
-      } */ /* ----> El último paso es asegurarse de que este mensaje de error sea visible para los usuarios.(form validation) */
+    const { email, password, username } = req.body;
     try {
-      const salt = bcryptjs.genSalt(saltRounds);
-      const hashedPassword = await bcryptjs.hash(password, salt);
-      const newUser = await User.create({
-        username,
-        email,
-        hashedPassword,
-      });
-      console.log('Newly created user is: ', newUser);
+      if (!email || !password || !username) {
+        return res.render('auth/signup', {
+          errorMessage: 'Complete all fields',
+        });
+      }
+      const userRepeat = await User.findOne({ email });
+      if (userRepeat) {
+        return res.render('auth/sign-up', { errorMessage: 'User already taken' });
+      }
+      const salt = bcryptjs.genSaltSync(saltRounds);
+      const newPassword = bcryptjs.hashSync(password, salt);
+      const newUser = await User.create({ email, hashedPassword: newPassword, username });
       res.redirect('/login');
-    } catch (e) {
-      console.error('Could not create new user ', e);
-    }
-  });
-
-  router.get('/userProfile', (req, res) => {
-    res.render('users/user-profile');
-  });
-
-  router.post('auth/logout', async (req, res, next) => {
-    try {
-      res.render('auth/logout.hbs', { name: 'Log out' });
     } catch (e) {
       next(e);
     }
+  });
+
+  router.get('/profile', (req, res) => {
+    const user = req.session.currentUser;
+    res.render('users/user-profile', { user });
+  });
+
+  router.post('/logout', async (req, res, next) => {
+    if (req.session) {
+      req.session.auth = null;
+      res.clearCookie('auth');
+      req.session.destroy();
+    }
+    res.redirect('/login');
   });
   return router;
 }
