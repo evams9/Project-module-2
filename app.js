@@ -5,11 +5,11 @@ const MongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 
-
 const { MONGO_URI } = require('./db/index');
 
 const baseRoutes = require('./routes/base');
 const authRoutes = require('./routes/auth');
+const comicRoutes = require('./routes/comic');
 
 handlebars.registerPartials(`${__dirname}/views/partials`);
 
@@ -39,6 +39,7 @@ function setupApp() {
 
   app.use('/', baseRoutes());
   app.use('/', authRoutes());
+  app.use('/', comicRoutes());
 
   app.use((req, res) => {
     res.render('404.hbs');
@@ -53,15 +54,9 @@ function setupApp() {
     }
     // req.app.get('env') === 'development' ? err : {};
     res.render('error', { message: error.message, error: err });
-
-
   });
- 
+
   return app;
-  
 }
-
-
-
 
 module.exports = setupApp;

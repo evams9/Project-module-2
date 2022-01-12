@@ -1,7 +1,8 @@
 const isLoggedIn = (req, res, next) => {
-  // do what you need
+  if (!req.session.currentUser) {
+    return res.redirect('/login');
+  }
+  next();
 };
 
-module.exports = {
-  isLoggedIn,
-};
+module.exports = isLoggedIn;
