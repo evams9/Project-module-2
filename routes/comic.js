@@ -1,5 +1,6 @@
 const express = require('express');
 const isLoggedIn = require('../middlewares');
+const Comic = require('../models/comic');
 
 function comicRoutes() {
   const router = express.Router();
@@ -17,91 +18,24 @@ function comicRoutes() {
 
   // Ruta POST para crear el nuevo comic
   router.post('/comics/new', isLoggedIn, async (req, res, next) => {
-    const {title} = req.body;
-    try{
-      console.log(req.body);
-      const newComic = await Comic.create(title);
-      
-      res.redirect(`/comics/detail/${newComic.id}`);
-     } catch (e) {
-      next(e)
-
+    const { title, volumeNumber, editorial, genre, numberPages, description, opinion } = req.body;
+    try {
+      const newComic = await Comic.create({ title, volumeNumber, editorial, genre, numberPages, description, opinion });
+      res.redirect(`/comics/detail/${newComic._id}`);
+    } catch (e) {
+      next(e);
     }
-
-        const {volumeNumber} = req.body;
-    try{
-      console.log(req.body);
-      const newComic = await Comic.create(volumeNumber);
-      
-      res.redirect(`/comics/detail/${newComic.id}`);
-     } catch (e) {
-      next(e)
-
-    }
-
-    const {editorial} = req.body;
-    try{
-      console.log(req.body);
-      const newComic = await Comic.create(editorial);
-      
-      res.redirect(`/comics/detail/${newComic.id}`);
-     } catch (e) {
-      next(e)
-
-    }
-
-    const {genre} = req.body;
-    try{
-      console.log(req.body);
-      const newComic = await Comic.create(genre);
-      
-      res.redirect(`/comics/detail/${newComic.id}`);
-     } catch (e) {
-      next(e)
-
-    }
-
-    const {numberPages} = req.body;
-    try{
-      console.log(req.body);
-      const newComic = await Comic.create(numberPages);
-      
-      res.redirect(`/comics/detail/${newComic.id}`);
-     } catch (e) {
-      next(e)
-
-    }
-
-        const {description} = req.body;
-    try{
-      console.log(req.body);
-      const newComic = await Comic.create(description);
-      
-      res.redirect(`/comics/detail/${newComic.id}`);
-     } catch (e) {
-      next(e)
-
-    }
-
-        const {opinion} = req.body;
-    try{
-      console.log(req.body);
-      const newComic = await Comic.create(opinion);
-      
-      res.redirect(`/comics/detail/${newComic.id}`);
-     } catch (e) {
-      next(e)
-
-    }
-
-    // Do stuff
   });
 
   // Ruta para ver el detalle de un comic
-  router.get('/comics/detail/:id', isLoggedIn, async (req, res) => {
+  router.get('/comics/detail/:id', isLoggedIn, async (req, res, next) => {
     const comicId = req.params.id;
-    // Do stuff
-    res.render('comic/comic-detail');
+    try {
+      const comic = await Comic.findById(comicId);
+      res.render('comic/comic-detail', { comic });
+    } catch (e) {
+      next(e);
+    }
   });
 
   // Ruta para ver el formulario para editar un comic

@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="/new-comic" method="POST" class="new-comic" id="new-comic">
+    <form action="/comics/new" method="POST" class="new-comic" id="new-comic">
 
         <p>Create a new comic</p>
 
@@ -9,7 +9,7 @@
         </div>
 
         <div class="form-input">
-            <input type="text" name="volume-number" placeholder="Add volume number" id="number-newComic">
+            <input type="number" name="volumeNumber" placeholder="Add volume number" id="number-newComic">
             <label for="volume-number">Volume number</label>
         </div>
 
@@ -19,7 +19,6 @@
 
             <div class="form-input">
                 <!-- Aparece linea encima de genero -->
-                <input type="select" name="genre" id="genre-newComic">
                 <label for="genre">Genre:</label>
                 <select id="genre" name="genre">
                     <option value="action">Action</option>
@@ -34,7 +33,7 @@
 
 
                 <div class="form-input">
-                    <input type="text" name="pages" placeholder="Add number of pages" id="pages-newComic">
+                    <input type="number" name="numberPages" placeholder="Add number of pages" id="pages-newComic">
                     <label for="pages">Number of pages</label>
 
                     <div class="form-input">
@@ -52,7 +51,7 @@
                             {{/if}}
 
                             <div class="button-save">
-                                <button type="save">Done!</button>
+                                <button type="submit">Done!</button>
                             </div>
     </form>
 </div>
