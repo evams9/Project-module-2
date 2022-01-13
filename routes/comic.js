@@ -16,7 +16,84 @@ function comicRoutes() {
   });
 
   // Ruta POST para crear el nuevo comic
-  router.post('/comics/new', isLoggedIn, async (req, res) => {
+  router.post('/comics/new', isLoggedIn, async (req, res, next) => {
+    const {title} = req.body;
+    try{
+      console.log(req.body);
+      const newComic = await Comic.create(title);
+      
+      res.redirect(`/comics/detail/${newComic.id}`);
+     } catch (e) {
+      next(e)
+
+    }
+
+        const {volumeNumber} = req.body;
+    try{
+      console.log(req.body);
+      const newComic = await Comic.create(volumeNumber);
+      
+      res.redirect(`/comics/detail/${newComic.id}`);
+     } catch (e) {
+      next(e)
+
+    }
+
+    const {editorial} = req.body;
+    try{
+      console.log(req.body);
+      const newComic = await Comic.create(editorial);
+      
+      res.redirect(`/comics/detail/${newComic.id}`);
+     } catch (e) {
+      next(e)
+
+    }
+
+    const {genre} = req.body;
+    try{
+      console.log(req.body);
+      const newComic = await Comic.create(genre);
+      
+      res.redirect(`/comics/detail/${newComic.id}`);
+     } catch (e) {
+      next(e)
+
+    }
+
+    const {numberPages} = req.body;
+    try{
+      console.log(req.body);
+      const newComic = await Comic.create(numberPages);
+      
+      res.redirect(`/comics/detail/${newComic.id}`);
+     } catch (e) {
+      next(e)
+
+    }
+
+        const {description} = req.body;
+    try{
+      console.log(req.body);
+      const newComic = await Comic.create(description);
+      
+      res.redirect(`/comics/detail/${newComic.id}`);
+     } catch (e) {
+      next(e)
+
+    }
+
+        const {opinion} = req.body;
+    try{
+      console.log(req.body);
+      const newComic = await Comic.create(opinion);
+      
+      res.redirect(`/comics/detail/${newComic.id}`);
+     } catch (e) {
+      next(e)
+
+    }
+
     // Do stuff
   });
 

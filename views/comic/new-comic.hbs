@@ -4,11 +4,6 @@
         <p>Create a new comic</p>
 
         <div class="form-input">
-            <input type="text" name="image" placeholder="Add an image" id="img-newComic">
-            <label for="newimage">Image</label>
-        </div>
-
-        <div class="form-input">
             <input type="text" name="title" placeholder="Add title" id="title-newComic">
             <label for="title">Title</label>
         </div>
@@ -23,24 +18,41 @@
             <label for="editorial">Editorial</label>
 
             <div class="form-input">
-                <input type="text" name="pages" placeholder="Add number of pages" id="pages-newComic">
-                <label for="pages">Number of pages</label>
+                <!-- Aparece linea encima de genero -->
+                <input type="select" name="genre" id="genre-newComic">
+                <label for="genre">Genre:</label>
+                <select id="genre" name="genre">
+                    <option value="action">Action</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="drama">Drama</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="terror">Terror</option>
+                    <option value="romance">Romance</option>
+                </select>
+
 
                 <div class="form-input">
-                    <input type="text" name="description" placeholder="Add description" id="description-newComic">
-                    <label for="description">Description</label>
+                    <input type="text" name="pages" placeholder="Add number of pages" id="pages-newComic">
+                    <label for="pages">Number of pages</label>
 
                     <div class="form-input">
-                        <input type="text" name="opinion" placeholder="Add your opinion" id="opinion-newComic">
-                        <label for="opinion">Opinion</label>
+                        <input type="textarea" name="description" placeholder="Add description"
+                            id="description-newComic">
+                        <label for="description">Description</label>
+
+                        <div class="form-input">
+                            <input type="textarea" name="opinion" placeholder="Add your opinion" id="opinion-newComic">
+                            <label for="opinion">Opinion</label>
 
 
-                        {{#if errorMessage}}
-                        <p class="error">{{errorMessage}}</p>
-                        {{/if}}
+                            {{#if errorMessage}}
+                            <p class="error">{{errorMessage}}</p>
+                            {{/if}}
 
-                        <div class="button-save">
-                            <button type="save">Done!</button>
-                        </div>
+                            <div class="button-save">
+                                <button type="save">Done!</button>
+                            </div>
     </form>
 </div>
