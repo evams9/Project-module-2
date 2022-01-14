@@ -1,0 +1,9 @@
+  body {
+   
+  }
+
+  .button-logout{
+    display:flex;
+    margin:auto;
+    font-size: 30px;
+  }

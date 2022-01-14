@@ -1,13 +1,14 @@
-<p>Welcome to your profile {{user.username}}!</p>
+<form action="/logout" method="POST">
+  <div class="button-logout">
+    <input type="submit" value="Log out"></input>
+  </div>
+</form>
+
+
+<h1>Welcome to your profile {{user.username}}!</h1>
 
 
 
 <div class="button-newComic">
   <a href="/comics/new">Create new comic</a>
 </div>
-
-<form action="/logout" method="POST">
-  <div class="button-login">
-    <input type="submit" value="Log out"></input>
-  </div>
-</form>
