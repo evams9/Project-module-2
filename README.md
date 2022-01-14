@@ -1,5 +1,4 @@
 # Project module 2
-Pesadilla antes de Navidad
 
 ## Description:
 
