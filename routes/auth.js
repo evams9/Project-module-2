@@ -1,6 +1,8 @@
 const express = require('express');
 const bcryptjs = require('bcryptjs');
 const User = require('../models/user');
+const Comic = require('../models/comic');
+
 
 const saltRounds = 10;
 // const mongoose = require('mongoose');
@@ -62,7 +64,13 @@ function authRoutes() {
 
   router.get('/profile', (req, res) => {
     const user = req.session.currentUser;
-    res.render('users/user-profile', { user });
+    //const comicList = await Comic.find({})
+    Comic.find({}, function(err, comics) {
+      res.render('users/user-profile', {user, comics });
+        });
+
+    //res.render('users/user-profile', { user, comicList });
+  
   });
 
   router.post('/logout', async (req, res, next) => {
