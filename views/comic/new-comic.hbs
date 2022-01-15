@@ -1,0 +1,63 @@
+<div class="container-newComic">
+    <form action="/comics/new" method="POST" class="new-comic" id="new-comic">
+
+        <p class="newComic-title">Create a new comic</p>
+
+        <div class="form-input">
+            <input type="text" name="title" placeholder="Add title" id="title-newComic">
+            <label for="title">Title</label>
+        </div>
+
+        <div class="form-input">
+            <input type="number" name="volumeNumber" placeholder="Add volume number" id="number-newComic">
+            <label for="volume-number">Volume number</label>
+        </div>
+
+        <div class="form-input">
+            <input type="text" name="editorial" placeholder="Add editorial" id="editorial-newComic">
+            <label for="editorial">Editorial</label>
+        </div>
+
+        <div class="form-input">
+
+
+            <select id="genre" name="genre">
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="comedy">Comedy</option>
+                <option value="mystery">Mystery</option>
+                <option value="drama">Drama</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="terror">Terror</option>
+                <option value="romance">Romance</option>
+            </select>
+            <label for="genre">Genre</label>
+        </div>
+
+
+
+        <div class="form-input">
+            <input type="number" name="numberPages" placeholder="Add number of pages" id="pages-newComic">
+            <label for="pages">Number of pages</label>
+        </div>
+
+        <div class="form-input">
+            <input type="textarea" name="description" placeholder="Add description" id="description-newComic">
+            <label for="description">Description</label>
+        </div>
+
+        <div class="form-input">
+            <input type="textarea" name="opinion" placeholder="Add your opinion" id="opinion-newComic">
+            <label for="opinion">Opinion</label>
+        </div>
+
+
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
+
+        <div class="button-save">
+            <button type="submit">Done!</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,64 @@
+
+  
+  body {
+    margin-top: 50px;
+    background-image: url(/img/book.jpg);
+    font-family: sans-serif;
+  }
+  
+  .container-newComic {
+    /* border: 3px solid red; */
+    max-width: 90%;
+    margin: auto;
+    margin-top: 10px;
+  }
+  
+  :root {
+    --ctexto: rgb(14, 81, 88);
+    --error: rgb(184, 31, 31);
+  }
+  
+  
+  .new-comic {
+    /* border: 3px solid green; */
+    border-radius: 40px;
+    max-width: 500px;
+    padding: 30px 50px;
+    margin: auto;
+    background-color: whitesmoke;
+    box-shadow:whitesmoke 5px 5px 10px;
+  }
+  
+  .newComic-title {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+  }
+  
+  .form-input {
+    margin-bottom: 30px;
+  }
+  
+  .form-input label {
+    display: block;
+    margin-top: 10px;
+    font-size: 15px;
+    color: var(--ctexto);
+  }
+  
+  .mesageError {
+    color: var(--error);
+    margin-top: 0px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+   
+h1{
+   font-family: monospace; 
+}
