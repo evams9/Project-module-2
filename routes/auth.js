@@ -3,7 +3,6 @@ const bcryptjs = require('bcryptjs');
 const User = require('../models/user');
 const Comic = require('../models/comic');
 
-
 const saltRounds = 10;
 // const mongoose = require('mongoose');
 
@@ -62,15 +61,14 @@ function authRoutes() {
     }
   });
 
-  router.get('/profile', (req, res) => {
+  router.get('/profile', async (req, res, next) => {
     const user = req.session.currentUser;
-    //const comicList = await Comic.find({})
-    Comic.find({}, function(err, comics) {
-      res.render('users/user-profile', {user, comics });
-        });
-
-    //res.render('users/user-profile', { user, comicList });
-  
+    try {
+      const comics = await Comic.find({});
+      res.render('users/user-profile', { user, comics });
+    } catch (e) {
+      next(e);
+    }
   });
 
   router.post('/logout', async (req, res, next) => {

@@ -1,11 +1,12 @@
 const express = require('express');
+const isLoggedIn = require('../middlewares');
 
 function baseRoutes() {
   const router = express.Router();
 
-  router.get('/', async (req, res, next) => {
+  router.get('/', isLoggedIn, async (req, res, next) => {
     try {
-      res.render('home.hbs', { name: 'Ironhack' });
+      res.redirect('/profile');
     } catch (e) {
       next(e);
     }
