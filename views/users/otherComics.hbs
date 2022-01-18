@@ -1,8 +1,8 @@
-<div class="container-newComic">
-    <form action="/other/comics" method="POST" class="other-comics" id="other-comics">
-
-
-
-
-    </form>
+<div class="container-yourComics">
+    <h3>People's comics</h3>
+    <ul>
+        {{#each comics}}
+        <li><a href="/comics/detail/{{this._id}}/">{{this.title}}</a></li>
+        {{/each}}
+    </ul>
 </div>

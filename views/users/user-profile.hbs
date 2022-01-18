@@ -1,22 +1,21 @@
-<form action="/logout" method="POST">
-  <div class="button-logout">
-    <input type="submit" value="Log out"></input>
-  </div>
-</form>
-
-
 <h1>Welcome to your profile {{user.username}}!</h1>
 
 
 <div class="button-yourComics">
-  <a href="/your/comics">View your comics</a>
+  <a href="/comics/mine">View your comics</a>
 </div>
 
 <div class="button-otherComic">
-  <a href="/other/comics">View other users comics</a>
+  <a href="/comics/all">View other users comics</a>
 </div>
 
 
 <div class="button-newComic">
   <a href="/comics/new">Create new comic</a>
 </div>
+
+<form action="/logout" method="POST">
+  <div class="button-logout">
+    <input type="submit" value="Log out"></input>
+  </div>
+</form>

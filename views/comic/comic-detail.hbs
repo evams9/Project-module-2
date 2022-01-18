@@ -1,9 +1,8 @@
-<p class="newComic-title">Detail view of a comic</p>
+<p class="newComic-title">{{comic.title}}</p>
 
 <div class="detailComic-form">
     <form>
-        <b>Title:</b>
-        <p>{{comic.title}}</p>
+        <img src="{{comic.image}}" alt="{{comic.title}}" />
 
         <b>Author:</b>
         <p>{{comic.author}}</p>
@@ -23,5 +22,7 @@
         <b>Your Opinion:</b>
         <p> {{comic.opinion}}</p>
     </form>
+    <p><a href="/comics/edit/{{comic._id}}">Edit this comic</a></p>
+    <p><a href="/comics/delete/{{comic._id}}">Delete this comic</a></p>
     <p><a href="/profile">Go back to profile</a></p>
 </div>

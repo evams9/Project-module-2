@@ -7,8 +7,13 @@ function comicRoutes() {
 
   // Ruta para ver todos los comics
   router.get('/comics/all', isLoggedIn, async (req, res) => {
-    // Do stuff
-    res.render('comic/list-comics');
+    const user = req.session.currentUser;
+    try {
+      const comics = await Comic.find({});
+      res.render('users/otherComics', { user, comics });
+    } catch (e) {
+      next(e);
+    }
   });
 
   // Ruta para ver el formulario de crear un nuevo comic
@@ -18,10 +23,33 @@ function comicRoutes() {
 
   // Ruta POST para crear el nuevo comic
   router.post('/comics/new', isLoggedIn, async (req, res, next) => {
-    const { title, volumeNumber, editorial, genre, numberPages, description, opinion } = req.body;
+    const user = req.session.currentUser;
+    const { title, volumeNumber, editorial, genre, numberPages, description, opinion, author, image } = req.body;
     try {
-      const newComic = await Comic.create({ title, volumeNumber, editorial, genre, numberPages, description, opinion });
+      const newComic = await Comic.create({
+        title,
+        volumeNumber,
+        editorial,
+        genre,
+        numberPages,
+        description,
+        opinion,
+        image,
+        author,
+        user: user._id,
+      });
       res.redirect(`/comics/detail/${newComic._id}`);
+    } catch (e) {
+      next(e);
+    }
+  });
+
+  // Ruta para ver mis comics
+  router.get('/comics/mine', isLoggedIn, async (req, res, next) => {
+    const user = req.session.currentUser;
+    try {
+      const comics = await Comic.find({ user: user._id });
+      res.render('users/yourComics', { user, comics });
     } catch (e) {
       next(e);
     }
@@ -39,22 +67,51 @@ function comicRoutes() {
   });
 
   // Ruta para ver el formulario para editar un comic
-  router.get('/comics/edit/:id', isLoggedIn, async (req, res) => {
-    const comicId = req.params.id;
-    // Do stuff
-    res.render('comic/edit-comic');
+  router.get('/comics/edit/:id', isLoggedIn, async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      const comic = await Comic.findById(id);
+      res.render('comic/edit-comic', { comic });
+    } catch (e) {
+      next(e);
+    }
   });
 
   // Ruta para editar un comic
-  router.post('/comics/edit/:id', isLoggedIn, async (req, res) => {
+  router.post('/comics/edit/:id', isLoggedIn, async (req, res, next) => {
     const comicId = req.params.id;
-    // Do stuff
+    const { title, volumeNumber, editorial, genre, numberPages, description, opinion, author, image } = req.body;
+    try {
+      await Comic.findByIdAndUpdate(
+        comicId,
+        {
+          title,
+          volumeNumber,
+          editorial,
+          genre,
+          numberPages,
+          description,
+          opinion,
+          image,
+          author,
+        },
+        { new: true },
+      );
+      res.redirect(`/comics/detail/${comicId}`);
+    } catch (e) {
+      next(e);
+    }
   });
 
   // Ruta para borrar un comic
-  router.post('/comics/delete/:id', isLoggedIn, async (req, res) => {
+  router.get('/comics/delete/:id', isLoggedIn, async (req, res, next) => {
     const comicId = req.params.id;
-    // Do stuff
+    try {
+      await Comic.findByIdAndDelete(comicId);
+      res.redirect('/');
+    } catch (e) {
+      next(e);
+    }
   });
 
   return router;

@@ -16,3 +16,17 @@ body {
   font-family: 'Rubik', sans-serif;
   color: var(--dark-grey);
 }
+
+nav.navbar {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+nav.navbar a {
+  margin-right: 15px;
+}
+
