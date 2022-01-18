@@ -1,0 +1,14 @@
+<div class="container-yourComics">
+    <form action="/your/comics" method="POST" class="your-comics" id="your-comics">
+
+        <h3>Your comics</h3>
+        <ul>
+            {{#each comics}}
+            <li><a href="/comics/detail/{{this._id}}/">{{this.title}}</a></li>
+            {{/each}}
+        </ul>
+
+
+
+    </form>
+</div>

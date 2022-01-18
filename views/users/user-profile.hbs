@@ -6,12 +6,16 @@
 
 
 <h1>Welcome to your profile {{user.username}}!</h1>
-<h3>Comics</h3>
-<ul>
-  {{#each comics}}
-  <li><a href="/comics/detail/{{this._id}}/">{{this.title}}</a></li>
-  {{/each}}
-</ul>
+
+
+<div class="button-yourComics">
+  <a href="/your/comics">View your comics</a>
+</div>
+
+<div class="button-otherComic">
+  <a href="/other/comics">View other users comics</a>
+</div>
+
 
 <div class="button-newComic">
   <a href="/comics/new">Create new comic</a>
