@@ -60,6 +60,7 @@ function comicRoutes() {
     const comicId = req.params.id;
     try {
       const comic = await Comic.findById(comicId);
+
       res.render('comic/comic-detail', { comic });
     } catch (e) {
       next(e);
@@ -82,7 +83,7 @@ function comicRoutes() {
     const comicId = req.params.id;
     const { title, volumeNumber, editorial, genre, numberPages, description, opinion, author, image } = req.body;
     try {
-      await Comic.findByIdAndUpdate(
+      const comic = await Comic.findByIdAndUpdate(
         comicId,
         {
           title,
@@ -97,6 +98,7 @@ function comicRoutes() {
         },
         { new: true },
       );
+      console.log('Updated', comic);
       res.redirect(`/comics/detail/${comicId}`);
     } catch (e) {
       next(e);
