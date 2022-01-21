@@ -1,10 +1,3 @@
-:root {
-  --white-color: white;
-  --primary-color: #e3562a;
-  --secondary-color: #65aaea;
-  --grey: #bebab3;
-  --dark-grey: #78746d;
-}
 
 * {
   box-sizing: border-box;
@@ -44,20 +37,16 @@ nav.navbar i a:hover {
 
 }
 
-
-
 .button-yourComics{
   
   margin: auto;
   display: flex;
   justify-content: space-around;
   padding: 8px;
-  margin-right: 10px;
-  /*filter:blur(2px);*/
+  /*margin-right: 10px;*/
+    /*filter:blur(2px);*/
 
 }
-
-
 
 .button-otherComic{
   margin: auto;
@@ -65,7 +54,6 @@ nav.navbar i a:hover {
   justify-content: space-around;
   padding: 8px;
   
-
 }
 
 .button-newComic{
@@ -73,6 +61,47 @@ nav.navbar i a:hover {
   display: flex;
   justify-content: space-around;
   padding: 8px;
- 
-  
+}
+
+.comic-card{
+  margin: auto;
+  display: flex;
+  padding: 10px;
+  }
+
+p a{
+ text-decoration: none;
+ font-size: 25px;
+ font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ margin:20px;
+ background-color: rgb(240, 231, 240);
+ padding: 10px;
+ color: black;
+ border-radius: 40px;
+
+}
+
+.button-logout{
+  margin-right: auto;
+  display: flex;
+  justify-content:end;
+  padding: 20px;
+  }
+
+.arrow{
+  margin-left: 30px;
+}
+
+
+
+.button-style{
+ background-color:thistle;
+margin: 5px;
+font-family: monospace;
+font-size: 17px;
+border-radius: 30px; 
+}
+
+h1{
+  margin: 10px;
 }

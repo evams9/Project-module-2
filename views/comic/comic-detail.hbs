@@ -25,7 +25,8 @@
             <p> {{comic.opinion}}</p>
         </ul>
     </form>
-    <p><a href="/comics/edit/{{comic._id}}">Edit this comic</a></p>
-    <p><a href="/comics/delete/{{comic._id}}">Delete this comic</a></p>
-    <p><a href="/profile">Go back to profile</a></p>
+    <a class="arrow" href="/profile"><img src="/img/back.png" width="30px"></a>
+    <a href="/comics/edit/{{comic._id}}"><img class="arrow" src="/img/edit.png" width="30px"></a>
+    <a href="/comics/delete/{{comic._id}}"><img class="arrow" src="/img/delete.png" width="30px"></a>
+
 </div>

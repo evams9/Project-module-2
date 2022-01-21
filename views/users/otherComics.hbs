@@ -2,7 +2,12 @@
     <h3>People's comics</h3>
     <ul>
         {{#each comics}}
-        <li><a href="/comics/detail/{{this._id}}/">{{this.title}}</a></li>
+        <div class="comic-card">
+            <img width="120px" src="{{this.image}}" alt="{{this.title}}" />
+            <p><a href="/comics/detail/{{this._id}}/">{{this.title}}</a></p>
+        </div>
         {{/each}}
     </ul>
+
+    <a class="arrow" href="/profile"><img src="/img/back.png" width="30px"></a>
 </div>
