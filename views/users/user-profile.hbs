@@ -1,18 +1,24 @@
-<form action="/logout" method="POST">
-  <div class="button-logout">
-    <input type="submit" value="Log out"></input>
-  </div>
-</form>
-
-
 <h1>Welcome to your profile {{user.username}}!</h1>
-<h3>Comics</h3>
-<ul>
-  {{#each comics}}
-  <li><a href="/comics/detail/{{this._id}}/">{{this.title}}</a></li>
-  {{/each}}
-</ul>
+
+
+<div class="button-yourComics">
+  <!--<button><a href="/comics/mine">View your comics</a></button>-->
+  <i> <a href="/comics/mine"><img src="/img/Sailor.jpg" width="200px"></a></i>
+</div>
+
+<div class="button-otherComic">
+  <!--<button><a href="/comics/users">View users comics</a></button>-->
+  <i><a href="/comics/all"><img src="/img/18.png" width="180px"></a></i>
+</div>
+
 
 <div class="button-newComic">
-  <a href="/comics/new">Create new comic</a>
+  <!--<button><a href="/comics/new">Create new comic</a></button>-->
+  <a href="/comics/new"><img src="/img/luffy.jpg" width="190px"></a>
 </div>
+
+<form action="/logout" method="POST">
+  <div class="button-logout">
+    <input class="button-style" type="submit" value="Log out"></input>
+  </div>
+</form>

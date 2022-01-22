@@ -1,24 +1,32 @@
-<p class="newComic-title">Detail view of a comic</p>
-
 <div class="detailComic-form">
     <form>
-        <b>Title:</b>
-        <p>{{comic.title}}</p>
+        <p class="newComic-title">{{comic.title}}</p>
+        <img class="img-detail" src="{{comic.image}}" width="230px" alt="{{comic.title}}" src="{{comic.image}}"
+            width="230px">
 
-        <b>Volume number:</b>
-        <p>{{comic.volumeNumber}}</p>
 
-        <b>Genre:</b>
-        <p>{{comic.genre}}</p>
+        <ul>
+            <b>Author:</b>
+            <p>{{comic.author}}</p>
 
-        <b>Pages:</b>
-        <p>{{comic.numberPages}}</p>
+            <b>Volume number:</b>
+            <p>{{comic.volumeNumber}}</p>
 
-        <b>Description:</b>
-        <p>{{comic.description}}</p>
+            <b>Genre:</b>
+            <p>{{comic.genre}}</p>
 
-        <b>Your Opinion:</b>
-        <p> {{comic.opinion}}</p>
+            <b>Pages:</b>
+            <p>{{comic.numberPages}}</p>
+
+            <b>Description:</b>
+            <p>{{comic.description}}</p>
+
+            <b>Your Opinion:</b>
+            <p> {{comic.opinion}}</p>
+        </ul>
     </form>
-    <p><a href="/profile">Go back to profile</a></p>
+    <a class="arrow" href="/profile"><img src="/img/back.png" width="30px"></a>
+    <a href="/comics/edit/{{comic._id}}"><img class="arrow" src="/img/edit.png" width="30px"></a>
+    <a href="/comics/delete/{{comic._id}}"><img class="arrow" src="/img/delete.png" width="30px"></a>
+
 </div>

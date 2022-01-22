@@ -11,6 +11,15 @@
 p{
 
 }
+.img-detail{
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
 
+}
   .detailComic-form{
+
+    background-color: rgb(240, 231, 240);
+    border-radius: 40px;
   }
